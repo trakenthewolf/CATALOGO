@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "title": "Producto 1",
+        "category": "categoria1",
+        "description": "Este es un producto de ejemplo con una descripción detallada. Incluye características y beneficios del producto. Ideal para quienes buscan calidad y estilo en un solo producto.",
+        "price": "$1,500",
+        "image": "https://via.placeholder.com/300x300?text=Producto+1"
+    },
+    {
+        "id": 2,
+        "title": "Producto 2",
+        "category": "categoria1",
+        "description": "Descripción detallada del producto 2. Este producto tiene características únicas que lo hacen especial. Fabricado con materiales de primera calidad y diseñado para durar muchos años.",
+        "price": "$2,200",
+        "image": "https://via.placeholder.com/300x300?text=Producto+2"
+    },
+    {
+        "id": 3,
+        "title": "Producto 3",
+        "category": "categoria2",
+        "description": "El producto 3 es ideal para quienes buscan calidad y durabilidad. Fabricado con los mejores materiales. Su diseño elegante lo convierte en una excelente opción para cualquier ocasión.",
+        "price": "$1,800",
+        "image": "https://via.placeholder.com/300x300?text=Producto+3"
+    },
+    {
+        "id": 4,
+        "title": "Producto 4",
+        "category": "categoria2",
+        "description": "Un producto versátil que se adapta a diferentes necesidades. Perfecto para uso diario. Su tamaño compacto lo hace fácil de transportar y guardar cuando no está en uso.",
+        "price": "$3,500",
+        "image": "https://via.placeholder.com/300x300?text=Producto+4"
+    },
+    {
+        "id": 5,
+        "title": "Producto 5",
+        "category": "categoria3",
+        "description": "Producto premium con acabados de lujo. Diseñado para quienes aprecian la exclusividad. Cada pieza es única y cuenta con detalles que lo distinguen de otros productos similares en el mercado.",
+        "price": "$4,200",
+        "image": "https://via.placeholder.com/300x300?text=Producto+5"
+    },
+    {
+        "id": 6,
+        "title": "Producto 6",
+        "category": "categoria3",
+        "description": "La mejor relación calidad-precio del mercado. No encontrarás nada igual a este precio. Incluye garantía de satisfacción y servicio post-venta para asegurar tu completa satisfacción.",
+        "price": "$1,950",
+        "image": "https://via.placeholder.com/300x300?text=Producto+6"
+    },
+    {
+        "id": 7,
+        "title": "Producto 7",
+        "category": "categoria1",
+        "description": "Un producto innovador que revoluciona el mercado. Sus características avanzadas lo convierten en líder de su categoría. Diseñado pensando en la comodidad y satisfacción del usuario.",
+        "price": "$2,750",
+        "image": "https://via.placeholder.com/300x300?text=Producto+7"
+    },
+    {
+        "id": 8,
+        "title": "Producto 8",
+        "category": "categoria2",
+        "description": "Elegancia y funcionalidad en un solo producto. Perfecto para quienes buscan estilo sin sacrificar practicidad. Su diseño atemporal garantiza que nunca pasará de moda.",
+        "price": "$3,100",
+        "image": "https://via.placeholder.com/300x300?text=Producto+8"
+    },
+    {
+        "id": 9,
+        "title": "Producto 9",
+        "category": "categoria3",
+        "description": "Producto exclusivo de edición limitada. Solo disponible por tiempo limitado. Aprovecha esta oportunidad única de adquirir un producto que pocos tendrán.",
+        "price": "$5,500",
+        "image": "https://via.placeholder.com/300x300?text=Producto+9"
+    }
+]

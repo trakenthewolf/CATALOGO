@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Elegante</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Catálogo Elegante</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar productos...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="filters">
+            <h3>Filtros</h3>
+            <div class="filter-group">
+                <h4>Categorías</h4>
+                <div class="filter-options">
+                    <label><input type="checkbox" class="category-filter" value="todos" checked> Todos</label>
+                    <label><input type="checkbox" class="category-filter" value="categoria1"> Categoría 1</label>
+                    <label><input type="checkbox" class="category-filter" value="categoria2"> Categoría 2</label>
+                    <label><input type="checkbox" class="category-filter" value="categoria3"> Categoría 3</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="catalog">
+            <div class="product-grid" id="product-container">
+                <!-- Los productos se cargarán dinámicamente desde JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para detalles del producto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="Imagen del producto">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-category"></p>
+                    <p id="modal-description"></p>
+                    <p id="modal-price" class="price"></p>
+                    <a id="whatsapp-button" href="" target="_blank" class="buy-button">
+                        <i class="fab fa-whatsapp"></i> Comprar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Catálogo Elegante. Todos los derechos reservados.</p>
+            <p><a href="admin.html" class="admin-link">Administración</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

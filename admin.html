@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Catálogo Elegante</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>Acceso Administrador</h2>
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="Ingresa la contraseña">
+            </div>
+            <button id="login-button">Ingresar</button>
+            <p id="login-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="admin-panel hidden">
+        <header>
+            <div class="container">
+                <h1>Panel de Administración</h1>
+                <div class="header-actions">
+                    <a href="index.html" class="view-site-btn"><i class="fas fa-eye"></i> Ver Sitio</a>
+                    <button id="logout-button" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="products-list">Lista de Productos</button>
+                <button class="tab-btn" data-tab="add-product">Añadir Producto</button>
+            </div>
+
+            <div id="products-list" class="tab-content active">
+                <div class="actions-bar">
+                    <h2>Productos</h2>
+                    <div class="search-container">
+                        <input type="text" id="product-search" placeholder="Buscar producto...">
+                        <button id="search-product-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- Los productos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="add-product" class="tab-content">
+                <h2 id="form-title">Añadir Nuevo Producto</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-group">
+                        <label for="product-title">Título</label>
+                        <input type="text" id="product-title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-category">Categoría</label>
+                        <select id="product-category" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="categoria1">Categoría 1</option>
+                            <option value="categoria2">Categoría 2</option>
+                            <option value="categoria3">Categoría 3</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-description">Descripción</label>
+                        <textarea id="product-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-price">Precio</label>
+                        <input type="text" id="product-price" placeholder="$0.00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-image">URL de la Imagen</label>
+                        <input type="text" id="product-image" placeholder="https://..." required>
+                        <p class="help-text">Ingresa la URL de una imagen o usa una imagen de placeholder</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancel-btn" class="cancel-btn">Cancelar</button>
+                        <button type="submit" id="save-btn" class="save-btn">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <div id="notification" class="notification">
+            <p id="notification-message"></p>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

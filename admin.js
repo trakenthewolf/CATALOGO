@@ -54,6 +54,10 @@ function init() {
     productSearch.addEventListener('keyup', e => {
         if (e.key === 'Enter') searchProducts();
     });
+    // Manejar selección de archivo de imagen
+    if (productImageFileInput) {
+        productImageFileInput.addEventListener('change', handleImageFileChange);
+    }
     
     // Inicializar formulario
     resetForm();
@@ -219,7 +223,7 @@ function saveProduct(e) {
         category: productCategoryInput.value,
         description: productDescriptionInput.value,
         price: productPriceInput.value,
-        image: productImageInput.value
+        image: productImageInput.value || 'https://via.placeholder.com/300x300?text=Producto'
     };
     
     if (isEditing) {
@@ -265,7 +269,20 @@ function editProduct(productId) {
     productCategoryInput.value = product.category;
     productDescriptionInput.value = product.description;
     productPriceInput.value = product.price;
-    productImageInput.value = product.image;
+    productImageInput.value = product.image || '';
+
+    // Mostrar previsualización existente si hay imagen
+    if (productImagePreview) {
+        if (product.image) {
+            productImagePreview.src = product.image;
+            productImagePreview.classList.remove('hidden');
+        } else {
+            productImagePreview.src = '';
+            productImagePreview.classList.add('hidden');
+        }
+    }
+    // Limpiar selección de archivo
+    if (productImageFileInput) productImageFileInput.value = '';
     
     // Cambiar a la pestaña de formulario
     switchTab('add-product');
@@ -299,8 +316,13 @@ function resetForm() {
     productForm.reset();
     productIdInput.value = '';
     
-    // Sugerir una imagen de placeholder
-    productImageInput.value = 'https://via.placeholder.com/300x300?text=Nuevo+Producto';
+    // Imagen por defecto y limpiar selección/preview
+    if (productImageInput) productImageInput.value = 'https://via.placeholder.com/300x300?text=Nuevo+Producto';
+    if (productImageFileInput) productImageFileInput.value = '';
+    if (productImagePreview) {
+        productImagePreview.src = '';
+        productImagePreview.classList.add('hidden');
+    }
 }
 
 function searchProducts() {
@@ -356,4 +378,40 @@ function showNotification(message, isError = false) {
     setTimeout(() => {
         notification.classList.remove('show');
     }, 3000);
+}
+
+// Manejo de imagen local: leer como Data URL y mostrar previsualización
+function handleImageFileChange() {
+    const file = productImageFileInput.files && productImageFileInput.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+        showNotification('El archivo seleccionado no es una imagen válida', true);
+        productImageFileInput.value = '';
+        return;
+    }
+
+    // Límite de tamaño recomendado (1.5 MB)
+    const MAX_SIZE = 1.5 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+        showNotification('La imagen supera 1.5 MB. Elige una más ligera.', true);
+        productImageFileInput.value = '';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const dataUrl = e.target.result;
+        // Guardamos el Data URL en el input oculto para mantener compatibilidad
+        productImageInput.value = dataUrl;
+        // Mostrar preview
+        if (productImagePreview) {
+            productImagePreview.src = dataUrl;
+            productImagePreview.classList.remove('hidden');
+        }
+    };
+    reader.onerror = () => {
+        showNotification('No se pudo leer la imagen seleccionada', true);
+    };
+    reader.readAsDataURL(file);
 }

@@ -6,6 +6,7 @@ const categoryFilters = document.querySelectorAll('.category-filter');
 const modal = document.getElementById('product-modal');
 const closeModal = document.querySelector('.close-modal');
 const whatsappNumber = '2616012677';
+const STORAGE_KEY = 'catalogProducts';
 
 // Cargar productos desde el archivo JSON
 let products = [];
@@ -13,12 +14,25 @@ let products = [];
 // Función para cargar los productos
 async function loadProducts() {
     try {
+        // 1) Intentar cargar desde localStorage (para reflejar cambios del panel admin)
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                products = parsed;
+                renderProducts(products);
+                return;
+            }
+        }
+
+        // 2) Si no hay datos en localStorage, intentar cargar desde products.json
         const response = await fetch('products.json');
+        if (!response.ok) throw new Error('Respuesta no OK al cargar products.json');
         products = await response.json();
         renderProducts(products);
     } catch (error) {
         console.error('Error al cargar los productos:', error);
-        // Cargar productos de ejemplo si hay error
+        // 3) Cargar productos de ejemplo si hay error
         loadSampleProducts();
     }
 }

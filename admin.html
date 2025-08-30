@@ -98,10 +98,15 @@
                         <input type="text" id="product-price" placeholder="$0.00" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="product-image">URL de la Imagen</label>
-                        <input type="text" id="product-image" placeholder="https://..." required>
-                        <p class="help-text">Ingresa la URL de una imagen o usa una imagen de placeholder</p>
+                    <div class="form-group image-upload-group">
+                        <label for="product-image-file">Imagen del producto</label>
+                        <input type="file" id="product-image-file" accept="image/*">
+                        <div class="image-preview-wrapper">
+                            <img id="product-image-preview" class="image-preview hidden" alt="Previsualización" />
+                        </div>
+                        <p class="help-text">Elige una imagen desde tu PC. Se almacenará localmente para su uso en el catálogo.</p>
+                        <!-- Mantener el input oculto para compatibilidad si ya existe lógica que usa 'product-image' -->
+                        <input type="hidden" id="product-image" />
                     </div>
                     
                     <div class="form-actions">
